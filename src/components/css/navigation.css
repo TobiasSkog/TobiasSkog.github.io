@@ -5,7 +5,7 @@
   overflow: hidden;
   width: 100vw;
   height: 60px;
-  background-image: url("../assets/1440p-nav-ns.png");
+  background-image: url('/src/assets/1440p-bkg.png');
   background-position: left;
   background-size: cover;
   box-shadow: 0 8px 4px #0d0f1e

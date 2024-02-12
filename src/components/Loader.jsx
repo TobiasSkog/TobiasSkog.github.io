@@ -1,4 +1,4 @@
-import('../css/loader.css');
+import('../components/css/loader.css');
 export default function Loader() {
   return (
     <div className="info-box-loading">

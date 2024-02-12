@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import About from './components/About';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
-import CV from './components/CV';
-import Home from './components/Home';
+import About from './pages/About';
+import Portfolio from './pages/Portfolio';
+import Contact from './pages/Contact';
+import CV from './pages/CV';
+import Home from './pages/Home';
 import { useEffect, useState } from 'react';
 import EasterEggModal from './components/EasterEggModal';
-import Loader from './components/Loader';
+import './App.css';
 
 export default function App() {
   const [pressedKeys, setPressedKeys] = useState([]);
@@ -54,7 +54,7 @@ export default function App() {
   };
   return (
 
-    <BrowserRouter>
+    <HashRouter>
 
       <div className={`App${easterEggActive ? 'active' : ''}`}>
         <Navigation />
@@ -71,6 +71,6 @@ export default function App() {
           </Routes>
         }
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

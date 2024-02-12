@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import Loader from './Loader';
+import Loader from '../components/Loader';
 
 export default function Portfolio() {
   // This will be using the backend server and a api key however we will not be using this for the
