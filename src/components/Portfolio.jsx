@@ -2,7 +2,10 @@ import { useEffect, useState, useRef } from 'react';
 import Loader from './Loader';
 
 export default function Portfolio() {
-  const BASE_URL = 'http://localhost:8000/portfolios';
+  // This will be using the backend server and a api key however we will not be using this for the
+  // github pages version and will only use the basic github rest api without authentication
+  //const BASE_URL = 'http://localhost:8000/portfolios';
+  const BASE_URL = 'https://api.github.com/users/TobiasSkog/repos';
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [repoData, setRepoData] = useState([]);
