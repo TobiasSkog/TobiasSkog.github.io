@@ -4,7 +4,8 @@ const cors = require('cors');
 const axios = require('axios');
 require('dotenv').config();
 
-const BASE_URL = 'https://api.github.com/user/repos';
+// const BASE_URL = 'https://api.github.com/user/repos';
+const BASE_URL = 'https://api.github.com/users/TobiasSkog/repos';
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
   res.json('hi');
 
 })
+
 app.get('/portfolios', (req, res) => {
   const githubApiRequest = {
     method: 'GET',
@@ -20,8 +22,7 @@ app.get('/portfolios', (req, res) => {
     headers: {
       "content-type": "application/json",
       "X-GitHub-Api-Version": "2022-11-28",
-      "Authorization": `Bearer ${process.env.REACT_APP_GITHUB_API_KEY}`,
-
+      // "Authorization": `Bearer ${process.env.REACT_APP_GITHUB_API_KEY}`,
     },
   };
   axios.request(githubApiRequest).then((response) => {

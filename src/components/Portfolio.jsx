@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import Loader from './Loader';
 
 export default function Portfolio() {
   const BASE_URL = 'http://localhost:8000/portfolios';
@@ -68,10 +69,8 @@ export default function Portfolio() {
             <h1>Tobias Skog - Portfolio</h1>
           </div>
           <section className="portfolio"> {/* Root Element */}
-            {isLoading &&
-              <div className="info-box-loading">
-                Loading Repositories From GitHub...
-              </div>}
+            {isLoading && <Loader />}
+
 
             {!isLoading &&
               repoData.map((repo) => (

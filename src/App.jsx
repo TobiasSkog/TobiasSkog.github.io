@@ -7,6 +7,7 @@ import CV from './components/CV';
 import Home from './components/Home';
 import { useEffect, useState } from 'react';
 import EasterEggModal from './components/EasterEggModal';
+import Loader from './components/Loader';
 
 export default function App() {
   const [pressedKeys, setPressedKeys] = useState([]);
@@ -20,23 +21,18 @@ export default function App() {
         setEasterEggActive((prevActivated) => !prevActivated);
       }
     };
-    const handleKeyDown = (event) => {
-      setPressedKeys((prevKeys) => {
-        const updatedKeys = [...prevKeys, event.key];
-        return updatedKeys.slice(-keyCombination.length);
-      });
 
-      setPressedKeys((updatedKeys) => {
-        const joinedKeys = updatedKeys.join('');
-        if (joinedKeys === keyCombination) {
+    const handleKeyDown = (event) => {
+      setPressedKeys((prevKeys) => [...prevKeys, event.key].slice(-keyCombination.length));
+      setPressedKeys(pressedKeys => {
+        if (pressedKeys.join('') === keyCombination) {
           setKeyboardEasterEggActive(true);
-        }
-        else {
+          setPressedKeys([]);
+        } else {
           setKeyboardEasterEggActive(false);
         }
-        return updatedKeys;
-      });
-
+        return pressedKeys;
+      })
     };
 
     document.addEventListener('click', handleDocumentClick);
@@ -47,7 +43,7 @@ export default function App() {
       document.removeEventListener('keydown', handleKeyDown);
     };
 
-  }, []);
+  }, [pressedKeys]);
 
   const isClickOnEasterEgg = (event) => {
     const x = event.clientX;
@@ -62,7 +58,6 @@ export default function App() {
 
       <div className={`App${easterEggActive ? 'active' : ''}`}>
         <Navigation />
-
         {keyboardEasterEggActive && <EasterEggModal />}
 
         {!keyboardEasterEggActive &&
