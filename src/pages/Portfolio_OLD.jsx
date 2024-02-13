@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import Loader from '../components/Loader';
-import Collapsible from "../components/Collapsible";
 
 export default function Portfolio() {
   // This will be using the backend server and a api key however we will not be using this for the
@@ -10,6 +9,9 @@ export default function Portfolio() {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [repoData, setRepoData] = useState([]);
+  const [activeModal, setActiveModal] = useState(null);
+  const popupRef = useRef(null);
+
   useEffect(() => {
     const updateName = (name) => {
       return name
@@ -25,12 +27,11 @@ export default function Portfolio() {
       try {
         const response = await fetch(BASE_URL);
         if (!response.ok) {
+          console.log(response)
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-
         const repos = await response.json();
-
-        repos.forEach((repo) => {
+        repos.forEach(repo => {
           if (!repo.updatedName) {
             repo.updatedName = updateName(repo.name)
           }
@@ -58,6 +59,9 @@ export default function Portfolio() {
     }
   };
 
+  const toggleModal = (repoId) => {
+    setActiveModal((prevModal) => (prevModal === repoId ? null : repoId));
+  };
 
   return (
     <>
@@ -67,21 +71,35 @@ export default function Portfolio() {
           <div className="info-box-root">
             <h1>Tobias Skog - Portfolio</h1>
           </div>
-          <section className="portfolio">
+          <section className="portfolio"> {/* Root Element */}
             {isLoading && <Loader />}
             {!isLoading &&
               repoData.map((repo) => (
-                <Collapsible label={repo.updatedName} key={repo.id}>
-                  <h3>{repo.updatedName}</h3>
-                  <p>{repo.description}</p>
-                  <button className="portfolio-button-link" onClick={() => openLink(repo.svn_url)}>
-                    Go to project
+                <article
+                  className={`portfolio-item ${activeModal === repo.id ? 'open' : ''}`}
+                  key={repo.id}
+                  ref={popupRef}>
+                  <button className="button" onClick={() => toggleModal(repo.id)}>
+                    {repo.updatedName}
                   </button>
-                </Collapsible>
+                  <div className="popup">
+                    <div className="popup-inner">
+                      <h3>{repo.updatedName}</h3>
+                      <div className="inner-row">
+                        <p>{repo.description}</p>
+                      </div>
+                      <div className="row">
+                        <button className="button link" onClick={() => openLink(repo.svn_url)}>
+                          Go to project
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
               ))}
           </section>
         </section>
-      </div >
+      </div>
       <div className="side-border"></div>
     </>
   );

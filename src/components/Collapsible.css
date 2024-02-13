@@ -1,0 +1,35 @@
+.collapsible .collapsible-toggle {
+  background-color: rgba(255, 255, 255, 0.01);
+  border: unset;
+  cursor: pointer;
+  /* color: #90b0cb; */
+  color: #6d69b2;
+  padding: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  height: 45px;
+  width: 100%;
+  box-shadow: 0px 2px 6px black;
+}
+
+.collapsible .collapsible-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+
+  /* color: #831fb2a7; */
+  color: #90b0cb;
+}
+
+.collapsible .collapsible-content {
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.collapsible .collapsible-content-parent {
+
+  text-align: center;
+  height: 0px;
+  overflow: hidden;
+  transition: height ease 0.3s;
+  box-shadow: 0px 2px 6px black inset;
+}

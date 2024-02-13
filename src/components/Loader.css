@@ -1,4 +1,4 @@
-@keyframes ldio-rpinwye8j0b {
+@keyframes loading-anim {
   0% {
     transform: rotate(0deg)
   }
@@ -20,46 +20,77 @@
   align-items: center;
   width: 100%;
   height: 120px;
-  font-size: 2rem;
   margin-top: 2%;
-  color: #1f72b2a7;
   background: rgba(0, 0, 0, 0.05);
   box-shadow: 0px 4px 15px black;
 }
 
-.ldio-rpinwye8j0b div {
+.info-box-loading h2 {
+  font-size: max(4vw, 1rem);
+  margin: 0;
+  padding-left: 10px;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 120px;
+  max-height: 120px;
+  height: 100%;
+  width: 100%;
+
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  /* width: 200px;
+  height: 200px; */
+  transform: translateZ(0) scale(0.6) translateY(35px) translateX(50px);
+
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+
+}
+
+.loading-spinner div {
   display: flex;
   width: 80px;
   height: 80px;
-  overflow: none;
-  animation: ldio-rpinwye8j0b 1s linear infinite;
-
-  border-radius: 50%;
-  box-shadow: 0 4px 0px 0px #1f72b2a7;
-  transform-origin: 40px 42px;
-}
-
-.loadingio-eclipse {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 160px;
-  height: 160px;
-  margin-left: 15px;
-  padding: 0;
-}
-
-.ldio-rpinwye8j0b {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  transform: translateZ(0) scale(.9) translateY(5px);
-  backface-visibility: hidden;
-  transform-origin: 0 0;
-}
-
-.ldio-rpinwye8j0b div {
+  animation: loading-anim 1s linear infinite;
   box-sizing: content-box;
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px -1px #a675b9;
+  transform-origin: 50% 50%;
+}
+
+
+@media screen and (min-width: 768px) {
+  .info-box-loading h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+  }
+
+
+  .loading-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .loading-spinner {
+    width: 100%;
+    height: 100%;
+    max-width: 150px;
+    max-height: 150px;
+    transform: translateZ(0) scale(0.9) translateY(5px) translateX(10px);
+    backface-visibility: hidden;
+    transform-origin: 0 0;
+  }
+
 }

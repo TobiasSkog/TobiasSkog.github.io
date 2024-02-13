@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 import EasterEggModal from './components/EasterEggModal';
 import './App.css';
 
+//npm run deploy -- -m "commit message"
+
 export default function App() {
   const [pressedKeys, setPressedKeys] = useState([]);
   const keyCombination = "1337";
@@ -59,10 +61,12 @@ export default function App() {
           <Navigation />
         </header>
         <main>
-          {keyboardEasterEggActive && <EasterEggModal />}
 
+          {keyboardEasterEggActive && <EasterEggModal />}
           {!keyboardEasterEggActive &&
+
             <Routes>
+
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/cv" element={<CV />} />

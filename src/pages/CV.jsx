@@ -5,19 +5,19 @@ export default function CV() {
   function fetchJsonData(dataType, data) {
     if (dataType === "Education") {
       return data.map((educationElement) => (
-        <dl id="cv-edu" key={educationElement.Id}>
-          <dt> {educationElement.Name} </dt>
+        <>
+          <dt className="cv-title" key={educationElement.Id}> {educationElement.Name} </dt>
           <dd className="cv-date">  {educationElement.Date} </dd>
-          <dd> {educationElement.Description} </dd>
-        </dl>
+          <dd className="cv-desc"> {educationElement.Description} </dd>
+        </>
       ));
     } else if (dataType === "Experience") {
       return data.map((experienceElement) => (
-        <dl id="cv-exp" key={experienceElement.Id}>
-          <dt> {experienceElement.Name} </dt>
+        <>
+          <dt className="cv-title" key={experienceElement.Id}> {experienceElement.Name} </dt>
           <dd className="cv-date"> {experienceElement.Date} </dd>
-          <dd> {experienceElement.Description} </dd>
-        </dl>
+          <dd className="cv-desc"> {experienceElement.Description} </dd>
+        </>
       ));
     }
   }
@@ -110,7 +110,7 @@ export default function CV() {
                 has equipped me with skills applicable in workplace settings, as detailed on the next page.</p>
             </section>
             <section className="cv-item">
-              <p>As part of my leadership role, I have:</p>
+              <p>As part of my <span className="important-text">leadership role</span>, I have:</p>
               <ul>
                 <li>Established and maintained rules for a pleasant and sustainable environment within the group.</li>
                 <li>Set clear and concise goals for all participants.</li>
@@ -134,7 +134,9 @@ export default function CV() {
           </div>
           <article className="cv">
             <section className="cv-item">
-              {fetchJsonData("Experience", jsonData.Experience)}
+              <dl className="cv-table" id="cv-exp" >
+                {fetchJsonData("Experience", jsonData.Experience)}
+              </dl>
             </section>
           </article>
           <div className="info-box">
@@ -142,7 +144,9 @@ export default function CV() {
           </div>
           <article className="cv">
             <section className="cv-item">
-              {fetchJsonData("Education", jsonData.Education)}
+              <dl className="cv-table" id="cv-edu" >
+                {fetchJsonData("Education", jsonData.Education)}
+              </dl>
             </section>
           </article>
         </section>
