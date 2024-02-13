@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <main>
+    <>
       <div className="side-border"></div>
 
       <div className="divider">
@@ -65,6 +65,6 @@ export default function About() {
       </div>
 
       <div className="side-border"></div>
-    </main>
+    </>
   );
 }

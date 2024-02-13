@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main>
+    <>
       <div className="side-border"></div>
 
       <div className="divider">
@@ -33,6 +33,6 @@ export default function Home() {
         </section>
       </div>
       <div className="side-border"></div>
-    </main >
+    </>
   );
 }

@@ -1,7 +1,7 @@
-import '../pages/css/contact.css';
+import './Contact.css';
 export default function Contact() {
   return (
-    <main>
+    <>
       <div className="side-border"></div>
       <div className="divider">
         <section className="content-container">
@@ -50,6 +50,6 @@ export default function Contact() {
         </section>
       </div>
       <div className="side-border"></div>
-    </main>
+    </>
   );
 }

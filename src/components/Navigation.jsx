@@ -1,9 +1,10 @@
-import '../components/css/navigation.css';
+import '../components/Navigation.css';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function Navigation() {
   return (
+
     <div className='main-menu'>
       <div className='left-menu'>
         <ul className='nav-item'>
@@ -22,27 +23,3 @@ export default function Navigation() {
     </div>
   );
 }
-
-
-// import '../css/navigation.css';
-
-// function Navigation() {
-//   return (
-//     <header>
-//       <nav className="main-menu">
-//         <div className="left-menu">
-//           <a href="/index.html"> <p className="nav-text-active">Home</p></a>
-//           <a href="/webbdesign/about/about.html"> <p className="nav-text">About</p></a>
-//           <a href="/webbdesign/portfolio/portfolio.html"> <p className="nav-text">Portfolio</p></a>
-//           <a href="/webbdesign/cv/cv.html"><p className="nav-text">CV</p></a>
-//           <a href="/webbdesign/contact/contact.html"> <p className="nav-text">Contact</p></a>
-//         </div>
-//         <div className="right-menu">
-//           <a href="https://www.digg.se/webbriktlinjer/alla-webbriktlinjer" target="none"> <p className="nav-text">Webb Guidelines</p></a>
-//         </div>
-//       </nav>
-//     </header>
-//   );
-// }
-
-// export default Navigation;

@@ -22,7 +22,7 @@ export default function CV() {
     }
   }
   return (
-    <main>
+    <>
 
       <aside className="cv-left-container">
         <section className="cv-content-container">
@@ -149,6 +149,6 @@ export default function CV() {
       </div>
       <div className="side-border"></div>
 
-    </main >
+    </>
   );
 }

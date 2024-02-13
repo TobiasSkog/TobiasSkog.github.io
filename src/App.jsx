@@ -53,23 +53,25 @@ export default function App() {
     return x >= easterEggRegionX[0] && x <= easterEggRegionX[1] && y >= easterEggRegionY[0] && y <= easterEggRegionY[1];
   };
   return (
-
     <HashRouter>
-
       <div className={`App${easterEggActive ? 'active' : ''}`}>
-        <Navigation />
-        {keyboardEasterEggActive && <EasterEggModal />}
+        <header>
+          <Navigation />
+        </header>
+        <main>
+          {keyboardEasterEggActive && <EasterEggModal />}
 
-        {!keyboardEasterEggActive &&
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/cv" element={<CV />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/guidelines" element={<Home />} />
-          </Routes>
-        }
+          {!keyboardEasterEggActive &&
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/cv" element={<CV />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/guidelines" element={<Home />} />
+            </Routes>
+          }
+        </main>
       </div>
     </HashRouter>
   );

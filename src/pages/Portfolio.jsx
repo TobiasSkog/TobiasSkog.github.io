@@ -64,7 +64,7 @@ export default function Portfolio() {
   };
 
   return (
-    <main>
+    <>
       <div className="side-border"></div>
       <div className="divider">
         <section className="content-container">
@@ -78,16 +78,14 @@ export default function Portfolio() {
             {!isLoading &&
               repoData.map((repo) => (
                 <article
-                  className={`portfolio-item ${activeModal === repo.id ? 'open' : 'closed'}`}
+                  className={`portfolio-item ${activeModal === repo.id ? 'open' : ''}`}
                   key={repo.id}
                   ref={popupRef}
                 >
                   <button className="button" onClick={() => toggleModal(repo.id)}>
                     {repo.updatedName}
                   </button>
-                  <div
-                    className={`popup ${activeModal === repo.id ? 'open' : 'closed'}`}
-                  >
+                  <div className="popup">
                     <div className="popup-inner">
                       <h3>{repo.updatedName}</h3>
                       <div className="inner-row">
@@ -109,6 +107,6 @@ export default function Portfolio() {
         </section>
       </div>
       <div className="side-border"></div>
-    </main >
+    </>
   );
 }
