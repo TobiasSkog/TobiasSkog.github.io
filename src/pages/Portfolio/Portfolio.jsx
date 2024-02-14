@@ -1,17 +1,20 @@
-import { useEffect, useState, useRef } from 'react';
-import Loader from '../components/Loader';
-import Collapsible from "../components/Collapsible";
+import { useEffect, useState } from 'react';
+import Loader from '../../components/Loader/Loader';
+import Collapsible from "../../components/Collapsible/Collapsible";
+import ErrorBox from '../../components/ErrorBox/ErrorBox';
+import './Portfolio.css';
 
 export default function Portfolio() {
   // This will be using the backend server and a api key however we will not be using this for the
   // github pages version and will only use the basic github rest api without authentication
-  //const BASE_URL = 'http://localhost:8000/portfolios';
-  //const BASE_URL = 'https://api.github.com/users/TobiasSkog/repos';
+  // const BASE_URL = 'http://localhost:8000/portfolios';
+  // const BASE_URL = 'https://api.github.com/users/TobiasSkog/repos';
   // UPDATE Using a personal backenserver selfhosted that uses API key to talk with github
   // then making a request to that backend server in the react application with the following URL
   const BASE_URL = 'https://githubpagesapi.cozroth.com/repos';
 
   const [error, setError] = useState();
+  const [displayError, setDisplayError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [repoData, setRepoData] = useState([]);
   useEffect(() => {
@@ -25,15 +28,19 @@ export default function Portfolio() {
     };
 
     const fetchPosts = async () => {
+      setDisplayError(false);
       setIsLoading(true);
+
       try {
         const response = await fetch(BASE_URL);
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          if (response.status !== 200) {
+            setDisplayError(true);
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
         }
 
         const repos = await response.json();
-
         repos.forEach((repo) => {
           if (!repo.updatedName) {
             repo.updatedName = updateName(repo.name)
@@ -42,18 +49,14 @@ export default function Portfolio() {
         setRepoData(repos);
       } catch (error) {
         setError(error);
+        setDisplayError(true);
       } finally {
         setIsLoading(false);
       }
     };
+
     fetchPosts();
   }, []);
-
-  if (error) {
-    return <div className="info-box-error">
-      Something went wrong! Please try again.
-    </div>;
-  }
 
   const openLink = (url) => {
     const newTab = window.open(url, '_blank', 'noopener,noreferrer');
@@ -61,7 +64,6 @@ export default function Portfolio() {
       newTab.opener = null;
     }
   };
-
 
   return (
     <>
@@ -73,7 +75,8 @@ export default function Portfolio() {
           </div>
           <section className="portfolio">
             {isLoading && <Loader />}
-            {!isLoading &&
+            {displayError && !isLoading && <ErrorBox message={error.message} />}
+            {!isLoading && !displayError &&
               repoData.map((repo) => (
                 <Collapsible label={repo.updatedName} key={repo.id}>
                   <h3>{repo.updatedName}</h3>

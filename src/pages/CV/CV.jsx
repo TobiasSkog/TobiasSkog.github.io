@@ -1,5 +1,6 @@
-import CvImage from '../assets/cv-img.png'
-import jsonData from '../data/cv.json';
+import CvImage from '../../assets/img/cv-img.png';
+import jsonData from '../../assets/data/cv.json';
+import './CV.css';
 
 export default function CV() {
   function fetchJsonData(dataType, data) {

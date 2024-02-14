@@ -1,6 +1,7 @@
-import './Contact.css';
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
+import './Contact.css';
+
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -8,18 +9,20 @@ export default function Contact() {
   const formRef = useRef();
 
   const SendEmail = (e, subject) => {
-    console.log(subject)
     e.preventDefault();
+    if (isSubmitting === true) {
+      console.log("IT IS TRUUUUUUUU TRUUUUUUUUUUUU")
+      return;
+    }
     setIsSubmitting(true);
 
     if (subject === "I'd like to hire you for a front-end project") {
-      setIsSubmitting(false);
       setStateMessage('Easteregg #3 found');
-
       setTimeout(() => {
         setStateMessage('Currently I do not take on any new front-end work, please try again later.');
         setTimeout(() => {
-          setStateMessage(null);
+          //setStateMessage(null);
+          //setIsSubmitting(false);
         }, 4000);
       }, 1000);
     } else {
@@ -33,28 +36,34 @@ export default function Contact() {
           })
         .then(() => {
           setStateMessage('Message sent!');
-          setIsSubmitting(false);
-          formRef.current.reset();
+          //formRef.current.reset();
           setTimeout(() => {
-            setStateMessage(null);
+            //setStateMessage(null);
+            //setIsSubmitting(false);
           }, 5000); // hides message after 5s
+
         },
           (error) => {
             setStateMessage('Something went wrong, please try again later', error.text);
-            setIsSubmitting(false);
             setTimeout(() => {
-              setStateMessage(null);
+              //setStateMessage(null);
+              //setIsSubmitting(false);
             }, 5000);
-          },
+
+          }
         );
+      setStateMessage(null);
+      setIsSubmitting(false);
     }
   };
   return (
     <>
+
+
       <div className="side-border"></div>
       <div className="divider">
         <section className="content-container">
-          <article className="container">
+          <article className="contanct-container">
             <h1 className="contact-header">Contact Me</h1>
 
             {stateMessage && <div className="info-box-contact-form">{<h3>{stateMessage}</h3>}</div>}
@@ -93,7 +102,7 @@ export default function Contact() {
               </div>
 
               <div className="submit">
-                <input type="submit" id="form_button" value="Contact Me" disabled={isSubmitting} />
+                <input type="submit" className="contact-submit-button" id="form_button" value="Contact Me" />
               </div>
             </form>
           </article>

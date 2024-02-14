@@ -39,7 +39,6 @@
   max-height: 120px;
   height: 100%;
   width: 100%;
-
 }
 
 .loading-spinner {
@@ -51,10 +50,8 @@
   /* width: 200px;
   height: 200px; */
   transform: translateZ(0) scale(0.6) translateY(35px) translateX(50px);
-
   backface-visibility: hidden;
   transform-origin: 0 0;
-
 }
 
 .loading-spinner div {
@@ -77,7 +74,6 @@
     padding-left: 10px;
   }
 
-
   .loading-container {
     width: 100%;
     height: 100%;
@@ -92,5 +88,4 @@
     backface-visibility: hidden;
     transform-origin: 0 0;
   }
-
 }

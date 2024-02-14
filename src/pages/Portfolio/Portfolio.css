@@ -1,0 +1,163 @@
+/* PORTFOLIO */
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio-button-link {
+  color: #90b0cb;
+  background-color: rgba(255, 255, 255, 0.01);
+  font-size: 1.2rem;
+  font-weight: 500;
+  height: 45px;
+  width: 50%;
+  cursor: pointer;
+  padding: 0.3rem;
+  box-shadow: 0px 2px 6px black;
+  border-style: none;
+}
+
+.portfolio-button-link:hover {
+  color: #6d69b2;
+  box-shadow: 0px 2px 6px #90b0cb30 inset;
+}
+
+.portfolio:nth-child(2) {
+  margin-top: 5px;
+  padding: 0;
+}
+
+.portfolio:last-child {
+  margin-bottom: 50px;
+}
+
+/* UNUSED STYLES AFTER IMPLEMENTING COLLAPSIBLE
+ .portfolio-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  max-height: 45px;
+  height: 45px;
+  width: 100%;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.portfolio-item .button:hover {
+  color: #831fb2a7;
+}
+
+
+ .portfolio-item.open {
+  max-height: 250px;
+  height: 100%;
+  animation: 250ms linear 0s 1 alternate open-main-window;
+}
+
+
+.portfolio-item.open>*:not(.button) {
+  opacity: 1;
+  animation: 250ms linear 0s 1 alternate content-opacity-show;
+}
+
+.portfolio-item>*:not(.button) {
+  opacity: 0;
+  animation: 250ms linear 0s 1 alternate content-opacity-hide;
+}
+
+
+ .button {
+  opacity: 1;
+  height: 45px;
+  max-height: 45px;
+  flex: 1;
+  border-style: none;
+  padding: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  color: #90b0cb;
+  box-shadow: 0px 2px 6px black;
+  background-color: rgba(255, 255, 255, 0.01);
+  text-decoration: none;
+}
+
+.popup {
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 15px black inset;
+}
+
+.popup-inner {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 5% 1%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.portfolio-item:first-child {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.portfolio-item:last-child {
+  margin-bottom: 55px;
+}
+
+@keyframes content-opacity-show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes content-opacity-hide {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes open-main-window {
+  from {
+    max-height: 45px;
+  }
+
+  to {
+    max-height: 250px;
+  }
+}
+
+@keyframes close-main-window {
+  from {
+    max-height: 250px;
+  }
+
+  to {
+    max-height: 45px;
+  }
+} */

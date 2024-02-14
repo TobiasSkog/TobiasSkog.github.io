@@ -1,12 +1,12 @@
 import { Routes, Route, HashRouter } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import About from './pages/About';
-import Portfolio from './pages/Portfolio';
-import Contact from './pages/Contact';
-import CV from './pages/CV';
-import Home from './pages/Home';
+import Navigation from './components/Navigation/Navigation';
+import About from './pages/About/About';
+import Portfolio from './pages/Portfolio/Portfolio';
+import Contact from './pages/Contact/Contact';
+import CV from './pages/CV/CV';
+import Home from './pages/Home/Home';
 import { useEffect, useState } from 'react';
-import EasterEggModal from './components/EasterEggModal';
+import EasterEggModal from './components/EasterEggModal/EasterEggModal';
 import './App.css';
 
 //npm run deploy -- -m "commit message"
@@ -60,13 +60,13 @@ export default function App() {
         <header>
           <Navigation />
         </header>
+        
         <main>
 
           {keyboardEasterEggActive && <EasterEggModal />}
           {!keyboardEasterEggActive &&
 
             <Routes>
-
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/cv" element={<CV />} />
@@ -76,6 +76,7 @@ export default function App() {
             </Routes>
           }
         </main>
+
       </div>
     </HashRouter>
   );

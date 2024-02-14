@@ -1,3 +1,5 @@
+import './EasterEggModal.css';
+
 export default function EasterEggModal() {
   return (
     <div className='easter-egg-modal'>

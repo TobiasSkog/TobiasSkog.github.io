@@ -1,5 +1,5 @@
+import './Collapsible.css';
 import React, { useState, useRef } from 'react';
-import './Collapsible.css'
 
 export default function Collapsible({ label, children }) {
   const [isOpen, setIsOpen] = useState(false);
