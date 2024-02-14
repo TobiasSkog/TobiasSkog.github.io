@@ -5,8 +5,12 @@ import Collapsible from "../components/Collapsible";
 export default function Portfolio() {
   // This will be using the backend server and a api key however we will not be using this for the
   // github pages version and will only use the basic github rest api without authentication
-  const BASE_URL = 'http://localhost:8000/portfolios';
+  //const BASE_URL = 'http://localhost:8000/portfolios';
   //const BASE_URL = 'https://api.github.com/users/TobiasSkog/repos';
+  // UPDATE Using a personal backenserver selfhosted that uses API key to talk with github
+  // then making a request to that backend server in the react application with the following URL
+  const BASE_URL = 'https://githubpagesapi.cozroth.com/repos';
+
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [repoData, setRepoData] = useState([]);

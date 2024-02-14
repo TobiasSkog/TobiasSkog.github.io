@@ -1,5 +1,54 @@
 import './Contact.css';
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from 'react';
+
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [stateMessage, setStateMessage] = useState(null);
+  const formRef = useRef();
+
+  const SendEmail = (e, subject) => {
+    console.log(subject)
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    if (subject === "I'd like to hire you for a front-end project") {
+      setIsSubmitting(false);
+      setStateMessage('Easteregg #3 found');
+
+      setTimeout(() => {
+        setStateMessage('Currently I do not take on any new front-end work, please try again later.');
+        setTimeout(() => {
+          setStateMessage(null);
+        }, 4000);
+      }, 1000);
+    } else {
+      emailjs
+        .sendForm(
+          process.env.REACT_APP_EJS_SID,
+          process.env.REACT_APP_EJS_TID,
+          formRef.current,
+          {
+            publicKey: process.env.REACT_APP_EJS_PK
+          })
+        .then(() => {
+          setStateMessage('Message sent!');
+          setIsSubmitting(false);
+          formRef.current.reset();
+          setTimeout(() => {
+            setStateMessage(null);
+          }, 5000); // hides message after 5s
+        },
+          (error) => {
+            setStateMessage('Something went wrong, please try again later', error.text);
+            setIsSubmitting(false);
+            setTimeout(() => {
+              setStateMessage(null);
+            }, 5000);
+          },
+        );
+    }
+  };
   return (
     <>
       <div className="side-border"></div>
@@ -8,43 +57,44 @@ export default function Contact() {
           <article className="container">
             <h1 className="contact-header">Contact Me</h1>
 
-            <form action="#" method="post" id="contact-form">
+            {stateMessage && <div className="info-box-contact-form">{<h3>{stateMessage}</h3>}</div>}
+
+            <form ref={formRef} onSubmit={(e) => SendEmail(e, document.getElementById('subject_input').value)} id="contact-form">
 
               <div className="name">
-                <label for="name"></label>
-                <input type="text" placeholder="My name is" name="name" id="name_input" required />
+                <label htmlFor="name"></label>
+                <input type="text" placeholder="My name is" name="from_name" id="name_input" required />
               </div>
 
               <div className="email">
-                <label for="email"></label>
+                <label htmlFor="email"></label>
                 <input type="email" placeholder="My e-mail is" name="email" id="email_input" required />
               </div>
 
               <div className="phone">
-                <label for="phone"></label>
+                <label htmlFor="phone"></label>
                 <input type="text" placeholder="My phone number is" name="phone" id="phone_input" required />
               </div>
 
               <div className="subject">
-                <label for="subject"></label>
+                <label htmlFor="subject"></label>
                 <select name="subject" id="subject_input" placeholder="Subject" required>
-                  <option disabled hidden selected>Subject</option>
-                  <option>I'd like to get into contact</option>
-                  <option>I'd like to make a project proposal</option>
-                  <option>I'd like to hire you for a project</option>
-                  <option>I would like to contact you about something else</option>
+                  <option disabled hidden defaultValue>Subject</option>
+                  <option >I'd like to get into contact</option>
+                  <option >I'd like to make a project proposal</option>
+                  <option >I'd like to hire you for a project</option>
+                  <option >I'd like to hire you for a front-end project</option>
+                  <option >I would like to contact you about something else</option>
                 </select>
               </div>
-
               <div className="message">
-                <label for="message"></label>
+                <label htmlFor="message"></label>
                 <textarea name="message" placeholder="I would like to talk about" id="message_input" cols="30" rows="5" required />
               </div>
 
               <div className="submit">
-                <input type="submit" id="form_button" value="Contact Me" />
+                <input type="submit" id="form_button" value="Contact Me" disabled={isSubmitting} />
               </div>
-
             </form>
           </article>
         </section>

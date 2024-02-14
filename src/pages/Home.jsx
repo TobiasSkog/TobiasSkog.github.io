@@ -1,3 +1,5 @@
+import Collapsible from "../components/Collapsible";
+
 export default function Home() {
   return (
     <>

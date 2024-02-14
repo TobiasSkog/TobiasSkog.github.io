@@ -1,3 +1,13 @@
+/* To handle the display of the portfolio page properly */
+.portfolio:nth-child(2) {
+  margin-top: 5px;
+  padding: 0;
+}
+
+.portfolio:last-child {
+  margin-bottom: 50px;
+}
+
 .collapsible .collapsible-toggle {
   background-color: rgba(255, 255, 255, 0.01);
   border: unset;
